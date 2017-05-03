@@ -1,0 +1,88 @@
+Delivered-To: mike@free.law
+Received: by 10.80.151.225 with SMTP id f30csp402981edb;
+        Wed, 5 Apr 2017 13:24:01 -0700 (PDT)
+X-Received: by 10.84.149.168 with SMTP id m37mr39011646pla.97.1491423717277;
+        Wed, 05 Apr 2017 13:21:57 -0700 (PDT)
+Return-Path: <noreply@courtlistener.com>
+Received: from courtlistener.com (courtlistener.com. [64.201.244.226])
+        by mx.google.com with ESMTPS id e64si21515131pfa.234.2017.04.05.13.21.57
+        for <mike@free.law>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 05 Apr 2017 13:21:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply@courtlistener.com designates 64.201.244.226 as permitted sender) client-ip=64.201.244.226;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@courtlistener.com;
+       spf=pass (google.com: domain of noreply@courtlistener.com designates 64.201.244.226 as permitted sender) smtp.mailfrom=noreply@courtlistener.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=courtlistener.com
+Received: from localhost (localhost [IPv6:::1])
+	by courtlistener.com (Postfix) with ESMTP id B42491C0EB1;
+	Wed,  5 Apr 2017 13:21:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=courtlistener.com;
+	s=mail; t=1491423716;
+	bh=s0a0BqYFnqHRr2tLMz6huxt1zpMh0Y5xIX0ln4AAe7U=;
+	h=Subject:From:To:Date:From;
+	b=el3fPWNvvtXqzEgw0BPyL8QN2eZxi4v4FZVDVsXP+O7bLm+kFkYUj70Bh2twr8QuM
+	 Jec8wVkw72hfhBwYTknCtyf/HUvf8FLRAWH/zvBBpITMeSydy0xEGL4aWgxIqj6uQE
+	 q6Yx5KOf4KL6Elc6Eks1vjaFBR448uBCxsSW7jK8=
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Subject: [Django] [w1@courtlistener.com] Error: Task
+ cl.citations.tasks.update_document (0a199b4f-e1b5-4c58-84dd-a19f678967fe):
+ "OperationalError('FATAL: remaining connection slots are reserved for
+ non-replication superuser connections\\n', )"
+From: CourtListener <noreply@courtlistener.com>
+To: mike@free.law, bcarver@courtlistener.com
+Date: Wed, 05 Apr 2017 20:21:56 -0000
+Message-ID: <20170405202156.26264.99482@localhost>
+
+Task cl.citations.tasks.update_document with id 0a199b4f-e1b5-4c58-84dd-a19f678967fe raised exception:
+"OperationalError('FATAL:  remaining connection slots are reserved for non-replication superuser connections\\n',)"
+
+
+Task was called with args: (<Opinion: 1442194 - Thomas v. McGrath>, False) kwargs: {}.
+
+The contents of the full traceback was:
+
+Traceback (most recent call last):
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/app/trace.py", line 438, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/var/www/courtlistener/cl/citations/tasks.py", line 100, in update_document
+    matched_opinion = Opinion.objects.get(pk=match_id)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/models/query.py", line 328, in get
+    num = len(clone)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/models/query.py", line 144, in __len__
+    self._fetch_all()
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/models/query.py", line 965, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/models/query.py", line 238, in iterator
+    results = compiler.execute_sql()
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 838, in execute_sql
+    cursor = self.connection.cursor()
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/backends/base/base.py", line 164, in cursor
+    cursor = self.make_cursor(self._cursor())
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/backends/base/base.py", line 135, in _cursor
+    self.ensure_connection()
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/backends/base/base.py", line 130, in ensure_connection
+    self.connect()
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/utils.py", line 98, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/backends/base/base.py", line 130, in ensure_connection
+    self.connect()
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/backends/base/base.py", line 119, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/backends/postgresql_psycopg2/base.py", line 176, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/psycopg2/__init__.py", line 164, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, async=async)
+OperationalError: FATAL:  remaining connection slots are reserved for non-replication superuser connections
+
+
+
+-- 
+Just to let you know,
+py-celery at w1@courtlistener.com.

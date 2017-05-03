@@ -1,0 +1,78 @@
+Delivered-To: mike@free.law
+Received: by 10.80.151.213 with SMTP id f21csp1421797edb;
+        Mon, 17 Apr 2017 16:21:08 -0700 (PDT)
+X-Received: by 10.84.169.67 with SMTP id g61mr19278182plb.51.1492471268864;
+        Mon, 17 Apr 2017 16:21:08 -0700 (PDT)
+Return-Path: <noreply@courtlistener.com>
+Received: from courtlistener.com (courtlistener.com. [64.201.244.226])
+        by mx.google.com with ESMTPS id q81si12600437pfd.218.2017.04.17.16.21.08
+        for <mike@free.law>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 17 Apr 2017 16:21:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply@courtlistener.com designates 64.201.244.226 as permitted sender) client-ip=64.201.244.226;
+Authentication-Results: mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@courtlistener.com;
+       spf=pass (google.com: domain of noreply@courtlistener.com designates 64.201.244.226 as permitted sender) smtp.mailfrom=noreply@courtlistener.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=courtlistener.com
+Received: from localhost (localhost [IPv6:::1])
+	by courtlistener.com (Postfix) with ESMTP id 0614D1C08EB;
+	Mon, 17 Apr 2017 16:21:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=courtlistener.com;
+	s=mail; t=1492471268;
+	bh=M6Gfj+GVZ6tHToGMQJFFEQLjEelfnRDrYWRLrFcT+uA=;
+	h=Subject:From:To:Date:From;
+	b=wiFnn5BIhwsb1pKHawA9oWozY/yLx/lNe8Z8Ih55NhDjFa61xQAlUFsPQ/HvhJSa0
+	 Kqm23YR35//A9rwx7LCt7EbRn8U1Dc6xeCGghsmoezhQEBCNo5aDLwmwmQuW6duIeK
+	 APr5Q6J2DIxD7ULgKMwe5J+u9KWkOn4t7hVNIqcw=
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Subject: [Django] [w1@courtlistener.com] Error: Task
+ cl.search.tasks.add_or_update_items (6a5b616a-2ff4-4436-a93e-01688b3e1d79):
+ "ResponseError(u'Command # 1 (SETEX
+ celery-task-meta-6a5b616a-2ff4-4436-a93e-01688b3e1d79 3600
+ \\\\x80\\\\x02}q\\\\x01(U\\\\x06statusq\\\\x02U\\\\x07SUCCESSq\\\\x03U\\\\ttracebackq\\\\x04NU\\\\x06resultq\\\\x05NU\\\\x08childrenq\\\\x06]u.)
+ of pipeline caused error: MISCONF Redis is configured to save RDB snapshots,
+ but is currently not able to persist on disk. Commands that may modify the
+ data set are disabled. Please check Redis logs for details about the
+ error.', )"
+From: CourtListener <noreply@courtlistener.com>
+To: mike@free.law, bcarver@courtlistener.com
+Date: Mon, 17 Apr 2017 23:21:08 -0000
+Message-ID: <20170417232108.2129.51793@localhost>
+
+Task cl.search.tasks.add_or_update_items with id 6a5b616a-2ff4-4436-a93e-01688b3e1d79 raised exception:
+"ResponseError(u'Command # 1 (SETEX celery-task-meta-6a5b616a-2ff4-4436-a93e-01688b3e1d79 3600 \\\\x80\\\\x02}q\\\\x01(U\\\\x06statusq\\\\x02U\\\\x07SUCCESSq\\\\x03U\\\\ttracebackq\\\\x04NU\\\\x06resultq\\\\x05NU\\\\x08childrenq\\\\x06]u.) of pipeline caused error: MISCONF Redis is configured to save RDB snapshots, but is currently not able to persist on disk. Commands that may modify the data set are disabled. Please check Redis logs for details about the error.',)"
+
+
+Task was called with args: ([<Opinion: 2312935 - Mauro v. Raymark Industries, Inc.>, <Opinion: 2312936 - Harkless v. SWEENY IND. SCH. DIST. OF SWEENY, TEXAS>, <Opinion: 2312937 - HONEYWELL INTERN. v. Hamilton Sundstrand Corp.>, <Opinion: 2312938 - CR Bard, Inc. v. Wordtronics Corp.>, <Opinion: 2312939 - State v. Schubert>, <Opinion: 2312940 - Holtz v. JEFFERSON SMURFIT CORP.>, <Opinion: 2312941 - Lund v. Affleck>, <Opinion: 2312942 - United States v. Hildenbrandt>, <Opinion: 2312943 - United States v. Sloan>, <Opinion: 2312944 - Riotto v. Van Houten>, <Opinion: 2312945 - Feliz v. Conway>, <Opinion: 2312946 - C & P TELEPHONE v. Comptroller>, <Opinion: 2312947 - Rochkind v. Reynolds Securities, Inc.>, <Opinion: 2312948 - State v. Corey>, <Opinion: 2312949 - Brodar v. McKinney>, <Opinion: 2312950 - Com. v. Neely>, <Opinion: 2312951 - United States v. Edelmann>, <Opinion: 2312952 - Downey v. Wells Sanitary Dist.>, <Opinion: 2312953 - Frank's Nursery Sales, Inc. v. American Nat. Ins. Co.>
+ , <Opinion: 2312954 - EchoMail, Inc. v. American Exp. Co.>, <Opinion: 2312955 - Keane v. COM. DEPT. OF TRANSP.>, <Opinion: 2312956 - Scalafani v. Moore-McCormack Lines, Inc.>, <Opinion: 2312957 - Medtronic, Inc. v. Guidant Corp.>, <Opinion: 2312958 - Firestine v. Poverman>, <Opinion: 2312959 - Buckeye Forest Council v. US Forest Service>, <Opinion: 2312960 - In Re Japanese Electronic Products Antitrust Lit.>, <Opinion: 2312961 - Jones v. United Parcel Service, Inc.>, <Opinion: 2312962 - United States v. Fields>, <Opinion: 2312963 - Boylan v. State>, <Opinion: 2312964 - O'Neal v. Central States, Southeast and Southwest>, <Opinion: 2312965 - Concerned Residents of Buck Hill Falls v. Grant>, <Opinion: 2312966 - Zanville v. Garza>, <Opinion: 2312967 - Larkin v. Duncan>, <Opinion: 2312968 - Cobaugh v. Klick-Lewis, Inc.>, <Opinion: 2312969 - Toney v. Dept. of Public Welfare>, <Opinion: 2312970 - GET OUTDOORS II v. City of Lemon Grove, Cal.>, <Opinion: 2312971 - Adair v. Nashville Housing 
+ Authority>, <Opinion: 2312972 - Cardi Corp. v. State>, <Opinion: 2312973 - Royster v. Costco Wholesale Corp.>, <Opinion: 2312974 - Matter of CVS Pharmacy Wayne>, <Opinion: 2312975 - United States v. Rogers>, <Opinion: 2312976 - Schor v. Abbott Laboratories>, <Opinion: 2312977 - In Re Estate of Fike>, <Opinion: 2312978 - Big Sky Music v. Todd>, <Opinion: 2312979 - McDermott v. Hughley>, <Opinion: 2312980 - Carroll v. United of Omaha Life Ins. Co.>, <Opinion: 2312981 - Com. v. Gambal>, <Opinion: 2312982 - Hammond v. United States>, <Opinion: 2312983 - Palmer v. Monroe County Sheriff>, <Opinion: 2312984 - Davis v. Com.>], 'http://127.0.0.1:8983/solr/collection1') kwargs: {}.
+
+The contents of the full traceback was:
+
+Traceback (most recent call last):
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/app/trace.py", line 283, in trace_task
+    uuid, retval, SUCCESS, request=task_request,
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/backends/base.py", line 257, in store_result
+    request=request, **kwargs)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/backends/base.py", line 491, in _store_result
+    self.set(self.get_key_for_task(task_id), self.encode(meta))
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/backends/redis.py", line 160, in set
+    return self.ensure(self._set, (key, value), **retry_policy)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/backends/redis.py", line 149, in ensure
+    **retry_policy
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/kombu/utils/__init__.py", line 246, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/backends/redis.py", line 169, in _set
+    pipe.execute()
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/redis/client.py", line 2626, in execute
+    return execute(conn, stack, raise_on_error)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/redis/client.py", line 2523, in _execute_transaction
+    raise errors[0][1]
+ResponseError: Command # 1 (SETEX celery-task-meta-6a5b616a-2ff4-4436-a93e-01688b3e1d79 3600 \x80\x02}q\x01(U\x06statusq\x02U\x07SUCCESSq\x03U\ttracebackq\x04NU\x06resultq\x05NU\x08childrenq\x06]u.) of pipeline caused error: MISCONF Redis is configured to save RDB snapshots, but is currently not able to persist on disk. Commands that may modify the data set are disabled. Please check Redis logs for details about the error.
+
+
+-- 
+Just to let you know,
+py-celery at w1@courtlistener.com.

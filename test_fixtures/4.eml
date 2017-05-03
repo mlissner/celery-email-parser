@@ -1,0 +1,92 @@
+Delivered-To: mike@free.law
+Received: by 10.80.151.225 with SMTP id f30csp407686edb;
+        Wed, 5 Apr 2017 13:39:06 -0700 (PDT)
+X-Received: by 10.99.112.87 with SMTP id a23mr31905880pgn.7.1491424644197;
+        Wed, 05 Apr 2017 13:37:24 -0700 (PDT)
+Return-Path: <noreply@courtlistener.com>
+Received: from courtlistener.com (courtlistener.com. [64.201.244.226])
+        by mx.google.com with ESMTPS id r87si21578866pfe.317.2017.04.05.13.37.23
+        for <mike@free.law>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 05 Apr 2017 13:37:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply@courtlistener.com designates 64.201.244.226 as permitted sender) client-ip=64.201.244.226;
+Authentication-Results: mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@courtlistener.com;
+       spf=pass (google.com: domain of noreply@courtlistener.com designates 64.201.244.226 as permitted sender) smtp.mailfrom=noreply@courtlistener.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=courtlistener.com
+Received: from localhost (localhost [IPv6:::1])
+	by courtlistener.com (Postfix) with ESMTP id A9AF61C0DFF;
+	Wed,  5 Apr 2017 13:37:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=courtlistener.com;
+	s=mail; t=1491424643;
+	bh=qOPao5QZt7TwMbT7d11jvXwJUf0QSfoWCp8Coa76QX0=;
+	h=Subject:From:To:Date:From;
+	b=gp8HFtlxzggam6GWjvxTiIFMCFM0SqwU1G7v0Ob561jY0cgOWobnGTh7nMbjl/uPS
+	 pbRmz71/HAMf7/GxhBKxwuHbWBkf8bc0c3rKnxwRfI1ZOBZO9NU6X/BS1ZooaeUHi4
+	 KQr3zbo8QoXZ/Ch6bHQ8HneANUjg9MbCxxybrKQk=
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Subject: [Django] [w1@courtlistener.com] Error: Task
+ cl.citations.tasks.update_document (39ceb042-4da1-4c14-979d-66286118a107):
+ "OperationalError('FATAL: the database system is shutting down\\n', )"
+From: CourtListener <noreply@courtlistener.com>
+To: mike@free.law, bcarver@courtlistener.com
+Date: Wed, 05 Apr 2017 20:37:23 -0000
+Message-ID: <20170405203723.26264.81414@localhost>
+
+Task cl.citations.tasks.update_document with id 39ceb042-4da1-4c14-979d-66286118a107 raised exception:
+"OperationalError('FATAL:  the database system is shutting down\\n',)"
+
+
+Task was called with args: <Unrepresentable <type 'tuple'>: TypeError('coercing to Unicode: need string or buffer, tuple found',) '  File "/usr/lib/python2.7/runpy.py", line 162, in _run_module_as_main\n    "__main__", fname, loader, pkg_name)\n\n  File "/usr/lib/python2.7/runpy.py", line 72, in _run_code\n    exec code in run_globals\n\n  File "/var/www/.virtualenvs/courtlistener/lib/python2.7/site-packages/celery/__main__.py", line 54, in <module>\n    main()\n\n  File "/var/www/.virtualenvs/courtlistener/lib/python2.7/site-packages/celery/__main__.py", line 30, in main\n    main()\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/bin/celery.py", line 81, in main\n    cmd.execute_from_commandline(argv)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/bin/celery.py", line 770, in execute_from_commandline\n    super(CeleryCommand, self).execute_from_commandline(argv)))\n\n  File "/var/www/.virtualenvs/courtl
+ istener/local/lib/python2.7/site-packages/celery/bin/base.py", line 311, in execute_from_commandline\n    return self.handle_argv(self.prog_name, argv[1:])\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/bin/celery.py", line 762, in handle_argv\n    return self.execute(command, argv)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/bin/celery.py", line 694, in execute\n    ).run_from_argv(self.prog_name, argv[1:], command=argv[0])\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/bin/worker.py", line 179, in run_from_argv\n    return self(*args, **options)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/bin/base.py", line 274, in __call__\n    ret = self.run(*args, **kwargs)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/bin/worker.py", line 212, in run\n    state_db=self.node_format(stat
+ e_db, hostname), **kwargs\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/worker/__init__.py", line 206, in start\n    self.blueprint.start(self)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/bootsteps.py", line 123, in start\n    step.start(parent)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/bootsteps.py", line 374, in start\n    return self.obj.start()\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/worker/consumer.py", line 278, in start\n    blueprint.start(self)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/bootsteps.py", line 123, in start\n    step.start(parent)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/worker/consumer.py", line 821, in start\n    c.loop(*c.loop_args())\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/
+ python2.7/site-packages/celery/worker/loops.py", line 76, in asynloop\n    next(loop)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/kombu/async/hub.py", line 340, in create_loop\n    cb(*cbargs)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/concurrency/asynpool.py", line 278, in on_result_readable\n    next(it)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/concurrency/asynpool.py", line 260, in _recv_message\n    callback(message)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/billiard/pool.py", line 794, in on_state_change\n    state_handlers[state](*args)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/billiard/pool.py", line 776, in on_ready\n    item._set(i, obj)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/billiard/pool.py", line 1729, in _set\n    self._callb
+ ack, self._value)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/billiard/pool.py", line 1700, in safe_apply_callback\n    fun(*args, **kwargs)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/worker/job.py", line 384, in on_success\n    return self.on_failure(ret_value)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/worker/job.py", line 443, in on_failure\n    self._log_error(exc_info, send_failed_event=send_failed_event)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/worker/job.py", line 453, in _log_error\n    safe_repr(self.args),\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/kombu/utils/encoding.py", line 129, in safe_repr\n    return _safe_str(o, errors)\n\n  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/kombu/utils/encoding.py", line 122, in _safe_str\n    typ
+ e(s), exc, \'\\n\'.join(traceback.format_stack()))\n'> kwargs: {}.
+
+The contents of the full traceback was:
+
+Traceback (most recent call last):
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/app/trace.py", line 438, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/var/www/courtlistener/cl/citations/tasks.py", line 100, in update_document
+    matched_opinion = Opinion.objects.get(pk=match_id)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/models/query.py", line 328, in get
+    num = len(clone)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/models/query.py", line 144, in __len__
+    self._fetch_all()
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/models/query.py", line 965, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/models/query.py", line 238, in iterator
+    results = compiler.execute_sql()
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 838, in execute_sql
+    cursor = self.connection.cursor()
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/backends/base/base.py", line 164, in cursor
+    cursor = self.make_cursor(self._cursor())
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/backends/base/base.py", line 135, in _cursor
+    self.ensure_connection()
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/backends/base/base.py", line 130, in ensure_connection
+    self.connect()
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/utils.py", line 98, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/backends/base/base.py", line 130, in ensure_connection
+    self.connect()
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/backends/base/base.py", line 119, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/django/db/backends/postgresql_psycopg2/base.py", line 176, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/psycopg2/__init__.py", line 164, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, async=async)
+OperationalError: FATAL:  the database system is shutting down
+
+
+
+-- 
+Just to let you know,
+py-celery at w1@courtlistener.com.

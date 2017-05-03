@@ -1,0 +1,76 @@
+Delivered-To: mike@free.law
+Received: by 10.80.151.213 with SMTP id f21csp397140edb;
+        Fri, 14 Apr 2017 15:19:58 -0700 (PDT)
+X-Received: by 10.84.197.131 with SMTP id n3mr11293173pld.43.1492206726520;
+        Fri, 14 Apr 2017 14:52:06 -0700 (PDT)
+Return-Path: <noreply@courtlistener.com>
+Received: from courtlistener.com (courtlistener.com. [64.201.244.226])
+        by mx.google.com with ESMTPS id d78si3512863pfe.275.2017.04.14.14.52.06
+        for <mike@free.law>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 14 Apr 2017 14:52:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply@courtlistener.com designates 64.201.244.226 as permitted sender) client-ip=64.201.244.226;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@courtlistener.com;
+       spf=pass (google.com: domain of noreply@courtlistener.com designates 64.201.244.226 as permitted sender) smtp.mailfrom=noreply@courtlistener.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=courtlistener.com
+Received: from localhost (localhost [IPv6:::1])
+	by courtlistener.com (Postfix) with ESMTP id 9FC5A1C076E;
+	Fri, 14 Apr 2017 14:52:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=courtlistener.com;
+	s=mail; t=1492206725;
+	bh=gPCoTSdEaLpBqCu8CqFNgUxWsVKRjh6xMepG/Z6XDP8=;
+	h=Subject:From:To:Date:From;
+	b=CpJJAXnAi564qwIOMEQOcCGa9QiwKYcJMc0mz4Axf9WcG+e6lEUinewc9WUX9Y1Fq
+	 5FyNrEkV93LcJT6ABOxe6IdXDgzQd9l94P1GJiZbtV2Nir8BV1ZlnK0flF3dCkXYGr
+	 REhV2fnF086vhLRQPQ85uYXYfUgwU078ya4ipE6M=
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Subject: [Django] [w1@courtlistener.com] Error: Task
+ cl.citations.tasks.update_document (0a2b07e4-582e-4dd7-bd93-7e540ffb0402):
+ 'ResponseNotReady()'
+From: CourtListener <noreply@courtlistener.com>
+To: mike@free.law, bcarver@courtlistener.com
+Date: Fri, 14 Apr 2017 21:52:05 -0000
+Message-ID: <20170414215205.15099.22557@localhost>
+
+Task cl.citations.tasks.update_document with id 0a2b07e4-582e-4dd7-bd93-7e540ffb0402 raised exception:
+'ResponseNotReady()'
+
+
+Task was called with args: (<Opinion: 3338472 - Malinowski v. Bio-Gen Torrington, Inc., No. Cv 93 0524432 (Aug. 17, 1994)>, False) kwargs: {}.
+
+The contents of the full traceback was:
+
+Traceback (most recent call last):
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/celery/app/trace.py", line 438, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/var/www/courtlistener/cl/citations/tasks.py", line 94, in update_document
+    citing_doc=opinion
+  File "/var/www/courtlistener/cl/citations/match_citations.py", line 103, in match_citation
+    conn = sunburnt.SolrInterface(settings.SOLR_OPINION_URL, mode='r')
+  File "/var/www/courtlistener/cl/lib/sunburnt/sunburnt.py", line 159, in __init__
+    self.init_schema()
+  File "/var/www/courtlistener/cl/lib/decorators.py", line 31, in f_retry
+    return f(*args, **kwargs)
+  File "/var/www/courtlistener/cl/lib/sunburnt/sunburnt.py", line 167, in init_schema
+    urlparse.urljoin(self.conn.url, self.remote_schema_file))
+  File "/var/www/courtlistener/cl/lib/sunburnt/sunburnt.py", line 38, in request
+    return self.http_connection.request(*args, **kwargs)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/httplib2/__init__.py", line 1608, in request
+    (response, content) = self._request(conn, authority, uri, request_uri, method, body, headers, redirections, cachekey)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/httplib2/__init__.py", line 1350, in _request
+    (response, content) = self._conn_request(conn, request_uri, method, body, headers)
+  File "/var/www/.virtualenvs/courtlistener/local/lib/python2.7/site-packages/httplib2/__init__.py", line 1306, in _conn_request
+    response = conn.getresponse()
+  File "/usr/lib/python2.7/httplib.py", line 1077, in getresponse
+    raise ResponseNotReady()
+ResponseNotReady
+
+
+-- 
+Just to let you know,
+py-celery at w1@courtlistener.com.
